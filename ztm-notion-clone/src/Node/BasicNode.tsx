@@ -72,17 +72,17 @@ export const BasicNode = ({
         updateFocusedIndex(index - 1);
       }
     }
-
-    return (
-      <div
-        ref={nodeRef}
-        onInput={handleInput}
-        onClick={handleClick}
-        onKeyDown={onKeyDown}
-        contentEditable
-        suppressContentEditableWarning
-        className={styles.node} 
-      />
-    );
   };
+
+  return (
+    <div
+      ref={nodeRef}
+      onInput={handleInput}
+      onClick={handleClick}
+      onKeyDown={onKeyDown}
+      contentEditable
+      suppressContentEditableWarning
+      className={styles.node}
+    />
+  );
 };

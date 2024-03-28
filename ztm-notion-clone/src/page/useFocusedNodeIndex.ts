@@ -5,7 +5,7 @@ type useFocusedNodeIndexProps = {
     nodes: NodeData[];
 }
 
-export const useFocusedNodeIndex = () => ({nodes}: useFocusedNodeIndexProps): [number, Dispatch<SetStateAction<number>>] => {
+export const useFocusedNodeIndex = ({nodes}: useFocusedNodeIndexProps): [number, Dispatch<SetStateAction<number>>] => {
     const [focusedNodeIndex, setFocusedNodeIndex] = useState<number>(0);
 
     useEffect(() => {
