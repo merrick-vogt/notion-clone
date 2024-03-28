@@ -8,12 +8,15 @@ export const Cover = () => {
         fileInputRef.current?.click();
     }
 
-    const onCoverImageUpload:ChangeEventHandler<HTMLInputElement> = 
+    const onCoverImageUpload:ChangeEventHandler<HTMLInputElement> = (event) => {
+        const target = event.target;
+        console.log(target.files?.[0]);
+    }
 
     return (
         <div className={styles.cover}>
-            <img/>
-            <button className='styles.button' onClick={onChangeCoverImage}>Change cover</button>
+            <img src="ultimate.avif" alt="Cover" className={styles.image}/>
+            <button className={styles.button} onClick={onChangeCoverImage}>Change cover</button>
             <input onChange={onCoverImageUpload} style={{ display: "none" }}ref={fileInputRef} type="file"/>
 
         </div>
