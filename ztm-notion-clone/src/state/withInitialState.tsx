@@ -2,7 +2,7 @@ import { Page } from "../utils/types";
 import { useMatch } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { supabase } from "../supabaseClient";
-import { startPageScaffold } from "./startPageScaffold.json";
+import startPageScaffold from "./startPageScaffold.json";
 import { Loader } from "../components/Loader";
 import styles from "../utils.module.css";
 

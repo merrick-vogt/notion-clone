@@ -1,14 +1,14 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { supabase } from '../supabaseClient'
 import { Loader } from './Loader'
-import styles from './utils.module.css'
+import styles from '../utils.module.css'
 
 type FileImageProps = {
     filePath: string
 
-}
+} & React.ImgHTMLAttributes<HTMLImageElement>
 
-export const FileImage = ({ filePath }: FileImageProps) => {
+export const FileImage = ({ filePath, ...props}: FileImageProps) => {
     const [image, setImage] = useState('')
     const [loading, setLoading] = useState(true)
 
@@ -28,6 +28,8 @@ export const FileImage = ({ filePath }: FileImageProps) => {
     }, [filePath])
 
     if (loading) {
-        return <div style={styles.centeredFlex}><Loader /></div>
+        return <div className={styles.centeredFlex}><Loader /></div>
     }
+
+    return <img src={image} alt={filePath} {...props} />
 }
