@@ -18,7 +18,7 @@ function App() {
         element={
           <Private
             component={
-              <AppStateProvider initialState={initialState}>
+              <AppStateProvider>
                 <Page />
               </AppStateProvider>
             }
@@ -31,7 +31,7 @@ function App() {
         element={
           <Private
             component={
-              <AppStateProvider initialState={initialState}>
+              <AppStateProvider>
                 <Page />
               </AppStateProvider>
             }
