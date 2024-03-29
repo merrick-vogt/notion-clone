@@ -1,18 +1,33 @@
-import './App.css'
-import { Page } from './Page/Page'
-import { AppStateProvider } from './state/AppStateContext'
-import { createPage } from './utils/createPage'
-
-
+import "./App.css";
+import { Page } from "./Page/Page";
+import { AppStateProvider } from "./state/AppStateContext";
+import { createPage } from "./utils/createPage";
+import { Route, Routes } from "react-router-dom";
 
 const initialState = createPage();
 
-function App() {
-  return (
-    <AppStateProvider initialState={initialState}>
-      <Page/>
-    </AppStateProvider>
-  )
+const Auth = () => {
+  return <div>Auth</div>;
 }
 
-export default App
+function App() {
+  return (
+    <Routes>
+      <Route path="/auth" element={<Auth />} />
+      
+      <Route path="/:id" element={
+      <AppStateProvider initialState={initialState}>
+        <Page />
+      </AppStateProvider>
+      } />
+
+      <Route path="/" element={
+        <AppStateProvider initialState={initialState}>
+        <Page />
+      </AppStateProvider>
+      } />
+    </Routes>
+  );
+}
+
+export default App;
