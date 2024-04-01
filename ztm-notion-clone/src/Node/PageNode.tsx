@@ -15,7 +15,7 @@ type PageNodeProps = {
 export const PageNode = ({ node, isFocused, index }: PageNodeProps) => {
     const navigate = useNavigate();
     const [ pageTitle, setPageTitle ] = useState("");
-    const [ removeNodeByIndex ] = useAppState();
+    const { removeNodeByIndex } = useAppState();
 
     useEffect(() => {
         const handleKeyDown = (event: KeyboardEvent) => {

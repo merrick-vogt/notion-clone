@@ -17,13 +17,6 @@ export const ImageNode = ({ node, isFocused, index }: ImageNodeProps) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    if (!node.type || node.value.length === 0) {
-      fileInputRef.current?.click();
-    }
-  }, [node.value]);
-
-
-  useEffect(() => {
     if (!node.value || node.value.length === 0) {
       fileInputRef.current?.click();
     }
@@ -52,15 +45,16 @@ export const ImageNode = ({ node, isFocused, index }: ImageNodeProps) => {
 
   const onImageUpload = async (event: ChangeEvent<HTMLInputElement>) => {
     const target = event.target;
-    if (!target.files) {
-      changeNodeType(index, "text");
-    }
-    try {
-      const result = await uploadImage(target.files?.[0]);
-      if (result?.filePath) {
-        changeNodeValue(index, result?.filePath);
+    if (target.files && target.files.length > 0) {
+      try {
+        const result = await uploadImage(target.files[0]);
+        if (result?.filePath) {
+          changeNodeValue(index, result?.filePath);
+        }
+      } catch (error) {
+        changeNodeType(index, "text");
       }
-    } catch (error) {
+    } else {
       changeNodeType(index, "text");
     }
   };
