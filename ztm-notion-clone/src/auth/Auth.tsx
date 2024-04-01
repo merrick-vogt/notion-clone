@@ -1,8 +1,8 @@
 import { useState, FormEvent } from "react"
 import { useAuthSession } from "./AuthSessionContext"
 import { Navigate } from "react-router-dom"
-import styles from "../utils.modules.css"
 import { supabase } from "../supabaseClient"
+import styles from "../utils.module.css";
 
 export const Auth = () => {
     const [loading, setLoading] = useState(false)
@@ -29,7 +29,7 @@ export const Auth = () => {
     }
 
     return (
-        <div>
+        <div className={styles.centeredFlex}>
             <h1>Notes App</h1>
             <p>Sign in to continue</p>
             {loading ? ("Sending link ...") : (
